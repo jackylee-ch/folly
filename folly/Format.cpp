@@ -109,9 +109,13 @@ void FormatValue<double>::formatHelper(
   const char* infinitySymbol = isupper(arg.presentation) ? "INF" : "inf";
   const char* nanSymbol = isupper(arg.presentation) ? "NAN" : "nan";
   char exponentSymbol = isupper(arg.presentation) ? 'E' : 'e';
+  // Set the default values for Java Double.toString().
+  auto shortestLow = -3;
+  auto shortestHigh = 7;
 
   if (arg.precision == FormatArg::kDefaultPrecision) {
-    arg.precision = 6;
+    // Set the default values for Java Double.toString().
+    arg.precision = shortestHigh;
   }
 
   // 2+: for null terminator and optional sign shenanigans.
@@ -159,7 +163,7 @@ void FormatValue<double>::formatHelper(
           infinitySymbol,
           nanSymbol,
           exponentSymbol,
-          -4,
+          shortestLow,
           arg.precision,
           0,
           0);
@@ -179,7 +183,7 @@ void FormatValue<double>::formatHelper(
           infinitySymbol,
           nanSymbol,
           exponentSymbol,
-          -4,
+          shortestLow,
           arg.precision,
           0,
           0);
@@ -199,7 +203,7 @@ void FormatValue<double>::formatHelper(
           infinitySymbol,
           nanSymbol,
           exponentSymbol,
-          -4,
+          shortestLow,
           arg.precision,
           0,
           0);

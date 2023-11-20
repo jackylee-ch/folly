@@ -637,8 +637,9 @@ estimateSpaceNeeded(Src value) {
  */
 
 namespace detail {
-constexpr int kConvMaxDecimalInShortestLow = -6;
-constexpr int kConvMaxDecimalInShortestHigh = 21;
+// Set the default values for Java Double.toString().
+constexpr int kConvMaxDecimalInShortestLow = -3;
+constexpr int kConvMaxDecimalInShortestHigh = 7;
 } // namespace detail
 
 /** Wrapper around DoubleToStringConverter */

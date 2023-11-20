@@ -102,9 +102,10 @@ struct sockaddr_un {
 #ifdef MSG_ERRQUEUE
 #define FOLLY_HAVE_MSG_ERRQUEUE 1
 #ifdef SCM_TIMESTAMPING
-#ifndef FOLLY_HAVE_SO_TIMESTAMPING
-#define FOLLY_HAVE_SO_TIMESTAMPING 1
-#endif
+// disable timestamping if kernel does not support it
+//#ifndef FOLLY_HAVE_SO_TIMESTAMPING
+//#define FOLLY_HAVE_SO_TIMESTAMPING 1
+//#endif
 #ifndef TCP_ZEROCOPY_RECEIVE
 #define TCP_ZEROCOPY_RECEIVE 35
 #endif
